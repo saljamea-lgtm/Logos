@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: white;
+}
+
+.logo-ticker {
+  --logo-height: 50px;
+  --gap: 60px;
+  --speed: 35s;
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  width: max-content;
+  animation: logoScroll var(--speed) linear infinite;
+}
+
+.logo-track img {
+  height: var(--logo-height);
+  width: auto;
+  flex: 0 0 auto;
+  opacity: 0.95;
+}
+
+@keyframes logoScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+</style>
+</head>
+<body>
+
+<div class="logo-ticker">
+  <div class="logo-track">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/ABC.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/CNN.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/MTV.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/McGraw.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/NBC.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/Nat%20Geo.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/New%20Line.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PBS.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PEPSI.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/VH1.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/WP.png">
+
+    <!-- duplicate -->
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/ABC.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/CNN.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/MTV.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/McGraw.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/NBC.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/Nat%20Geo.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/New%20Line.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PBS.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PEPSI.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/VH1.png">
+    <img src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/WP.png">
+  </div>
+</div>
+
+</body>
+</html>
