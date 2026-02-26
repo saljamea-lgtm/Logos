@@ -1,118 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Client Logos Ticker</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Client Logos Ticker</title>
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #fff;
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
 
-    /* Container */
-    .ticker {
-      --h: 54px;     /* baseline logo height */
-      --gap: 72px;   /* spacing between logos */
-      --speed: 32s;  /* lower = faster */
-      overflow: hidden;
-      width: 100%;
-      padding: 0;                 /* keep tight; add 12px 0 if you want breathing room */
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
+/* Ticker container */
+.ticker {
+  --h: 54px;        /* baseline height */
+  --gap: 72px;      /* spacing */
+  --speed: 32s;     /* scroll speed */
 
-      /* optional premium edge fade */
-      -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-      mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    }
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 0;      /* slight vertical breathing room (prevents crop) */
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 
-    /* Moving track (contains 2 identical sets) */
-    .track {
-      display: flex;
-      width: max-content;
-      will-change: transform;
-      animation: scroll var(--speed) linear infinite;
-    }
+  /* subtle premium edge fade */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
 
-    /* Each set is identical; seam stays perfect */
-    .set {
-      display: flex;
-      align-items: center;
-      gap: var(--gap);
-      padding-right: var(--gap);
-      flex: 0 0 auto;
-    }
+/* Moving track */
+.track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: scroll var(--speed) linear infinite;
+}
 
-    /* Baseline logo styling */
-    .logo {
-      height: var(--h);
-      width: auto;
-      display: block;
-      flex: 0 0 auto;
-      transform-origin: center;
-      opacity: 0.95;
-    }
+/* One identical set */
+.set {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding-right: var(--gap);
+  flex: 0 0 auto;
+}
 
-    /* Visual normalization based on your screenshots */
-    .logo.cnn     { transform: scale(0.74); }
-    .logo.newline { transform: scale(1.45); }
-    .logo.mtv     { transform: scale(1.25); }
-    .logo.natgeo  { transform: scale(1.12); }
-    .logo.wp      { transform: scale(1.05); }
-    .logo.mcgraw  { transform: scale(0.98); }
+/* Base logo styling */
+.logo {
+  height: var(--h);
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
+  transform-origin: center;
+  opacity: 0.95;
+}
 
-    /* Perfect loop: track = 2 sets, so moving -50% lands exactly at start of set 2 */
-    @keyframes scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+/* Adjusted sizing tweaks */
+.logo.newline { transform: scale(1.28); }  /* no crop */
+.logo.pbs     { transform: scale(0.92); }  /* slightly smaller */
+.logo.vh1     { transform: scale(1.12); }  /* bigger */
+.logo.cnn     { transform: scale(0.70); }  /* slightly smaller */
+.logo.mtv     { transform: scale(1.18); }  /* slightly smaller */
 
-    /* Optional: pause on hover */
-    .ticker:hover .track { animation-play-state: paused; }
+.logo.natgeo  { transform: scale(1.12); }
+.logo.wp      { transform: scale(1.05); }
+.logo.mcgraw  { transform: scale(0.98); }
 
-    /* Accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      .track { animation: none; }
-    }
-  </style>
+/* Perfect infinite loop */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Pause on hover */
+.ticker:hover .track {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+}
+</style>
 </head>
 
 <body>
-  <div class="ticker" aria-label="Client logos" role="region">
-    <div class="track">
-      <!-- SET 1 -->
-      <div class="set">
-        <img class="logo newline" src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/New%20Line.png" alt="New Line Cinema">
-        <img class="logo pbs"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PBS.png" alt="PBS">
-        <img class="logo pepsi"   src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PEPSI.png" alt="Pepsi">
-        <img class="logo vh1"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/VH1.png" alt="VH1">
-        <img class="logo wp"      src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/WP.png" alt="The Washington Post">
-        <img class="logo abc"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/ABC.png" alt="ABC">
-        <img class="logo cnn"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/CNN.png" alt="CNN">
-        <img class="logo mtv"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/MTV.png" alt="MTV">
-        <img class="logo mcgraw"  src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/McGraw.png" alt="McGraw Hill">
-        <img class="logo nbc"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/NBC.png" alt="NBC">
-        <img class="logo natgeo"  src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/Nat%20Geo.png" alt="National Geographic">
-      </div>
 
-      <!-- SET 2 (duplicate for seamless infinite loop) -->
-      <div class="set" aria-hidden="true">
-        <img class="logo newline" src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/New%20Line.png" alt="">
-        <img class="logo pbs"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PBS.png" alt="">
-        <img class="logo pepsi"   src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PEPSI.png" alt="">
-        <img class="logo vh1"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/VH1.png" alt="">
-        <img class="logo wp"      src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/WP.png" alt="">
-        <img class="logo abc"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/ABC.png" alt="">
-        <img class="logo cnn"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/CNN.png" alt="">
-        <img class="logo mtv"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/MTV.png" alt="">
-        <img class="logo mcgraw"  src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/McGraw.png" alt="">
-        <img class="logo nbc"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/NBC.png" alt="">
-        <img class="logo natgeo"  src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/Nat%20Geo.png" alt="">
-      </div>
+<div class="ticker" aria-label="Client logos" role="region">
+  <div class="track">
+
+    <!-- SET 1 -->
+    <div class="set">
+      <img class="logo newline" src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/New%20Line.png" alt="New Line Cinema">
+      <img class="logo pbs"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PBS.png" alt="PBS">
+      <img class="logo pepsi"   src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PEPSI.png" alt="Pepsi">
+      <img class="logo vh1"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/VH1.png" alt="VH1">
+      <img class="logo wp"      src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/WP.png" alt="The Washington Post">
+      <img class="logo abc"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/ABC.png" alt="ABC">
+      <img class="logo cnn"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/CNN.png" alt="CNN">
+      <img class="logo mtv"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/MTV.png" alt="MTV">
+      <img class="logo mcgraw"  src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/McGraw.png" alt="McGraw Hill">
+      <img class="logo nbc"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/NBC.png" alt="NBC">
+      <img class="logo natgeo"  src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/Nat%20Geo.png" alt="National Geographic">
     </div>
+
+    <!-- SET 2 (duplicate for seamless loop) -->
+    <div class="set" aria-hidden="true">
+      <img class="logo newline" src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/New%20Line.png" alt="">
+      <img class="logo pbs"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PBS.png" alt="">
+      <img class="logo pepsi"   src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/PEPSI.png" alt="">
+      <img class="logo vh1"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/VH1.png" alt="">
+      <img class="logo wp"      src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/WP.png" alt="">
+      <img class="logo abc"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/ABC.png" alt="">
+      <img class="logo cnn"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/CNN.png" alt="">
+      <img class="logo mtv"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/MTV.png" alt="">
+      <img class="logo mcgraw"  src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/McGraw.png" alt="">
+      <img class="logo nbc"     src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/NBC.png" alt="">
+      <img class="logo natgeo"  src="https://cdn.jsdelivr.net/gh/saljamea-lgtm/Logos/Nat%20Geo.png" alt="">
+    </div>
+
   </div>
+</div>
+
 </body>
 </html>
