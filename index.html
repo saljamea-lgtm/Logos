@@ -12,11 +12,11 @@ html, body {
   background: #ffffff;
 }
 
-/* Ticker container */
+/* Container */
 .ticker {
-  --h: 54px;        /* baseline logo height */
-  --gap: 72px;      /* global spacing */
-  --speed: 32s;     /* lower = faster */
+  --h: 54px;
+  --gap: 72px;
+  --speed: 32s;
 
   overflow: hidden;
   width: 100%;
@@ -25,12 +25,11 @@ html, body {
   align-items: center;
   white-space: nowrap;
 
-  /* subtle edge fade */
   -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 
-/* Moving track */
+/* Track */
 .track {
   display: flex;
   width: max-content;
@@ -38,7 +37,7 @@ html, body {
   animation: scroll var(--speed) linear infinite;
 }
 
-/* One identical set */
+/* One full set */
 .set {
   display: flex;
   align-items: center;
@@ -47,7 +46,7 @@ html, body {
   flex: 0 0 auto;
 }
 
-/* Base logo styling */
+/* Base logo */
 .logo {
   height: var(--h);
   width: auto;
@@ -55,24 +54,30 @@ html, body {
   flex: 0 0 auto;
   transform-origin: center;
   opacity: 0.95;
-  margin: 0; /* keep clean; we’ll override specific offenders below */
+  margin: 0;
 }
 
-/* Size normalization (per your notes) */
-.logo.newline { transform: scale(1.28); } /* keep big but not cropped */
-.logo.pbs     { transform: scale(0.88); } /* shrink a hair */
-.logo.vh1     { transform: scale(1.25); } /* bigger */
-.logo.cnn     { transform: scale(0.66); } /* shrink a hair */
-.logo.mtv     { transform: scale(1.12); } /* shrink a hair (was 1.18) */
+/* Size adjustments */
+.logo.newline { transform: scale(1.28); }
+.logo.pbs     { transform: scale(0.88); }
+.logo.vh1     { transform: scale(1.28); }
+.logo.cnn     { transform: scale(0.62); }
+.logo.mtv     { transform: scale(1.08); }
 
 .logo.natgeo  { transform: scale(1.12); }
 .logo.wp      { transform: scale(1.05); }
 .logo.mcgraw  { transform: scale(0.98); }
 
-/* Spacing normalization
-   Some PNGs have extra transparent padding baked in (New Line is the main offender),
-   so we “pull” the next item closer with a small negative margin. */
-.logo.newline { margin-right: -28px; }  /* reduces the big gap between New Line and PBS */
+/* Spacing corrections for transparent padding offenders */
+
+/* New Line → PBS */
+.logo.newline { margin-right: -28px; }
+
+/* ABC → CNN spacing fix */
+.logo.abc { margin-right: -24px; }
+
+/* MTV → McGraw spacing fix */
+.logo.mtv { margin-right: -18px; }
 
 /* Perfect infinite loop */
 @keyframes scroll {
@@ -80,10 +85,10 @@ html, body {
   to   { transform: translateX(-50%); }
 }
 
-/* Pause on hover */
-.ticker:hover .track { animation-play-state: paused; }
+.ticker:hover .track {
+  animation-play-state: paused;
+}
 
-/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .track { animation: none; }
 }
